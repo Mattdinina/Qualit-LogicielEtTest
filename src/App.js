@@ -1,25 +1,45 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { createContext, useContext, useReducer } from 'react';
+import { legacy_createStore as createStore } from 'redux';
+import { useState } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+
+export default function note() {
+
+  const [note, SetNote] = useState(0)
+  const [id, SetId] = useState(0)
+
+  function NoteDelete(id) {
+    note.filter(i => i.grade != id)
+  }
+
+  function AddNote() {
+    return (
+      <>
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+          <input
+            value={id}
+            onChange={(event) => setId(id, ...event.currentTarget.value)}>
+          </input>
+          <input
+            value={note}
+            onChange={(event) => setNote(note, ...event.currentTarget.value)}
+          />
+          <button type="submit">Entrer une note :</button>
+        </form>;
+      </>)
+  }
 
-export default App;
+  function modifyNote(id) {
+
+  }
+
+  function Getnote(id) {
+
+  }
+}
